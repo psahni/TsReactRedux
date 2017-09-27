@@ -1,0 +1,129 @@
+<html>
+  <head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <style>
+			.container {
+				border: 1px solid green;
+				min-height: 3;
+				height: 100%;
+				margin: 10px;
+				flex-direction: row;
+			}
+        
+			.d-flex {
+				display: flex;
+			}
+        
+			.left-container {
+				border-right: 1px solid red;
+				height: 100%;
+				flex: 2 1 70%;
+			}
+        
+			.right-container {
+				flex: 1 1 30%;
+				flex-direction: column
+			}
+        
+			.heading {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+        
+			.m-l-10 {
+				margin-left: 10px;
+			}
+
+			.m-t-10 {
+				margin-top: 10px;
+			}
+
+			.m-b-10 {
+				margin-bottom: 10px;
+			}
+
+			.image-container {
+				width: 150px;
+				height: 150px;
+				border: 1px solid;      
+			}
+
+			.image-container.friends {
+				border: 2px solid green;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.friends-count {
+				margin-left: auto;      
+				margin-right: 10px;
+			}
+
+			.friends-row {
+				justify-content: space-around;	
+			}
+
+			.user-friends-list span {
+				display: block;
+			}
+
+			.p-5 {
+				padding: 5px;
+			}
+
+			.count {
+				color: red;
+				font-size: 30px;
+			}
+    </style>
+				
+		<script>
+				var App = angular.module('Exercise', []);
+				
+				App.controller('FriendsCtrl', function ($scope) {
+					$scope.friendList = ['Pankaj', 'Ashish', 'Diljohn'];
+				});
+				
+				App.controller('ProfileCtrl', function ($scope) {
+					$scope.name = "Prashant Sahni";
+					$scope.friendsCount = 3;
+					$scope.friendList = ['Pankaj', 'Ashish', 'Diljohn'];
+				});
+		</script>
+  </head>
+  <body ng-app="Exercise">
+    <div class='container d-flex'>
+			<div class="left-container" ng-controller="ProfileCtrl">
+				<h3 class="heading">User Profile</h3>
+				<div class="d-flex m-b-10 m-l-10">
+					<div class="image-container">
+					</div>
+					<div class="user-name m-l-10">                  
+						<h1>{{name}}</h1>
+					</div>
+					<div class="friends-count">
+							Friends Count: <span class="count">{{friendsCount}}</span>
+					</div>
+				</div>
+				<div class="d-flex friends-row">
+					<div class="image-container friends m-t-10 m-l-10" ng-repeat="friend in friendList">
+						<span>{{friend}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="right-container" ng-controller="FriendsCtrl">
+				<h3 class="p-5">Friends</h3>
+				<div class="user-friends-list p-5" ng-repeat="friend in friendList">					
+					<span>{{friend}}</span>
+				</div>
+				<div class="p-5">
+					<form>
+						<input type='text'/>
+						<button type="submit">Add</button>
+					</form>
+				</div>
+			</div>
+    </div>
+  </body>	
+</html>  
