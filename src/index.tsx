@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
 import { Hello } from "./components/Hello";
+import { UserProfile } from "./components/UserProfile";
 
 ReactDOM.render(
-    <Hello compiler="TypeScript 11" framework="React 1" />,
+    <UserProfile/>,
     document.getElementById("example")
 );
