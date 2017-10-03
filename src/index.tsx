@@ -4,6 +4,6 @@ import { Hello } from "./components/Hello";
 import { UserProfile } from "./components/UserProfile";
 
 ReactDOM.render(
-    <UserProfile/>,
+    <UserProfile userId={10} />,
     document.getElementById("example")
 );

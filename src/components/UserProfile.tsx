@@ -1,6 +1,30 @@
 import * as React from "react";
+export interface ProfieProps { userId: Number }
 
-export class UserProfile extends React.Component<any, any> {
+export class UserProfile extends React.Component<ProfieProps, any> {
+
+    constructor() {
+      super();       
+      this.state = {
+        name: 'Prashant Sahni',
+        friendsCount: 3
+      }
+    }
+
+    componentWillMount() {
+       console.log(this.props);       
+    }
+
+    displayFriends() {
+        return ['Pankaj', 'Ashish', 'Diljohn'].map((name) => {
+            return (
+              <div key={name} className="image-container friends m-t-10 m-l-10">
+                <span key={name}> {name}</span>
+              </div>
+            );
+        });
+    }
+
     render() {
         return (
              <div className="container d-flex">
@@ -10,10 +34,19 @@ export class UserProfile extends React.Component<any, any> {
                         <div className="image-container">
 					    </div>
 					    <div className="user-name m-l-10">                  
-						    <h1>Prashant Sahni</h1>
-					    </div>                        
+						    <h1>{this.state.name}</h1>
+					    </div>
+                        <div className="friends-count">
+                            Friends Count: <span className="count">{this.state.friendsCount}</span>
+                        </div>                                              
                     </div>
-                </div> 
+                    <div className="d-flex friends-row">
+                        {this.displayFriends()}                        
+                    </div>
+                </div>
+                <div className="right-container">
+                    <h3 className="p-5">Friends</h3>
+                </div>
             </div>
         )
     }
