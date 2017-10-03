@@ -15,15 +15,19 @@ export class UserProfile extends React.Component<ProfieProps, any> {
        console.log(this.props);       
     }
 
-    displayFriends() {
+    displayFriends(page: string = '') {
+        const classNames = page == 'profile' ? 'image-container friends m-t-10 m-l-10' : 'user-friends-list p-5';
+        
         return ['Pankaj', 'Ashish', 'Diljohn'].map((name) => {
             return (
-              <div key={name} className="image-container friends m-t-10 m-l-10">
+              <div key={name} className={classNames}>
                 <span key={name}> {name}</span>
               </div>
             );
         });
     }
+
+
 
     render() {
         return (
@@ -41,11 +45,18 @@ export class UserProfile extends React.Component<ProfieProps, any> {
                         </div>                                              
                     </div>
                     <div className="d-flex friends-row">
-                        {this.displayFriends()}                        
+                        {this.displayFriends('profile')}                        
                     </div>
                 </div>
                 <div className="right-container">
                     <h3 className="p-5">Friends</h3>
+                    {this.displayFriends()}
+				    <div className="p-5">
+					    <form>
+						    <input type='text'/>
+						    <button type="submit">Add</button>
+					    </form>
+				    </div>                    
                 </div>
             </div>
         )

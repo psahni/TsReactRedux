@@ -5,5 +5,5 @@ import { UserProfile } from "./components/UserProfile";
 
 ReactDOM.render(
     <UserProfile userId={10} />,
-    document.getElementById("example")
+    document.getElementById("app")
 );
