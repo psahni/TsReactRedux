@@ -1,4 +1,5 @@
 import * as React from "react";
+import { UserInspector } from './UserInspector';
 export interface ProfieProps { userId: Number }
 
 export class UserProfile extends React.Component<ProfieProps, any> {
@@ -12,7 +13,6 @@ export class UserProfile extends React.Component<ProfieProps, any> {
     }
 
     componentWillMount() {
-       console.log(this.props);       
     }
 
     displayFriends(page: string = '') {
@@ -50,13 +50,9 @@ export class UserProfile extends React.Component<ProfieProps, any> {
                 </div>
                 <div className="right-container">
                     <h3 className="p-5">Friends</h3>
-                    {this.displayFriends()}
 				    <div className="p-5">
-					    <form>
-						    <input type='text'/>
-						    <button type="submit">Add</button>
-					    </form>
-				    </div>                    
+                        <UserInspector/>
+				    </div>                
                 </div>
             </div>
         )
